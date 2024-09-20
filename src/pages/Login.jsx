@@ -3,8 +3,8 @@ import background from "../assets/netflixbg.jpg";
 import logo from '../assets/logo/netflix.png'
 
 const Login = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    // const [username, setUsername] = useState("");
+    // const [password, setPassword] = useState("");
     const [signIn,setSignIn]=useState(false)
     const handleSignIn=()=>{
         console.log(signIn)
@@ -24,14 +24,14 @@ const Login = () => {
       <div className="flex w-full h-full justify-center items-center">
         <form
           action=""
-          className="bg-black w-[25rem] py-10 px-16 opacity-80 rounded-sm"
+          className="bg-black w-[25rem] py-20 px-16 opacity-80 rounded-sm"
         >
             {
                 signIn?(
-                    <h1 className="text-3xl text-center text-white">Sign Up</h1>
+                    <h1 className="text-3xl pb-5 text-center text-white">Sign Up</h1>
 
                 ):(
-                    <h1 className="text-3xl text-center text-white">Sign In</h1>
+                    <h1 className="text-3xl pb-5 text-center text-white">Sign In</h1>
                 )
             }
           
