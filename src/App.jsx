@@ -1,31 +1,37 @@
+import "./App.css";
+import Login from "./pages/Login";
+import Video from "./pages/Video";
+import Layout from "./Layout";
+import Home from "./pages/Home";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import { AuthProvider } from "./context/Authcontext";
 
-import './App.css'
-import Login from './pages/Login'
-import Layout from './Layout'
-import Home from './pages/Home'
-import { Route  ,RouterProvider ,createBrowserRouter ,createRoutesFromElements } from 'react-router-dom'
-
-const router=createBrowserRouter(
+const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-    <Route path="/" element={<Layout/>}>
-        <Route path=""  element={<Home/>}/>
+      <Route path="/" element={<Layout />}>
+        <Route path="" element={<Home />} />
+        <Route path="video/:id" element={<Video />} />
         {/* <Route/> */}
-    </Route>
-    <Route path="login" element={<Login/>}/>
+      </Route>
+      <Route path="login" element={<Login />} />
     </>
-    
   )
-)
+);
 
 function App() {
-  
-
   return (
     <>
-    <RouterProvider router={router}/>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

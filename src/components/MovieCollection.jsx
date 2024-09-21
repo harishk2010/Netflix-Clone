@@ -4,12 +4,12 @@ import { requests } from "../utils/constants"
 const MovieCollection = () => {
   return (
     < >
-    <MovieRow url={requests.PopularMovies} title={"Popular movies"}/>
-    <MovieRow url={requests.AdventuresMovies} title={"Adventures Movies"}/>
-    <MovieRow url={requests.DocumentaryMovies} title={"Documentary Movies"}/>
-    <MovieRow url={requests.TopRatedMovies} title={"Top Rated Movies"}/>
-    <MovieRow url={requests.HorrorMovies} title={"Horror Movies"}/>
-    <MovieRow url={requests.RomanceMovies} title={"Romance Movies"}/>
+    <MovieRow row={1} url={requests.PopularMovies} title={"Popular movies"}/>
+    <MovieRow row={2} url={requests.AdventuresMovies} title={"Adventures Movies"}/>
+    <MovieRow row={3} url={requests.DocumentaryMovies} title={"Documentary Movies"}/>
+    <MovieRow row={4} url={requests.TopRatedMovies} title={"Top Rated Movies"}/>
+    <MovieRow row={5} url={requests.HorrorMovies} title={"Horror Movies"}/>
+    <MovieRow row={6} url={requests.RomanceMovies} title={"Romance Movies"}/>
     
     </>
   )
