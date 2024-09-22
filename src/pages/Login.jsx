@@ -37,6 +37,15 @@ const Login = () => {
 
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
+    console.log("Name:", name.current.value);
+    console.log("Email:", email.current.value);
+    console.log("Password:", password.current.value);
+  
+    if(!name.current.value ){
+      toast.error("Username cannot be empty!")
+      return
+    }
+    setSpinner(true);
     let data = await signUp(
       name.current.value,
       email.current.value,
