@@ -7,6 +7,7 @@ import {
     signOut,
     onAuthStateChanged,
   } from "firebase/auth";
+import { toast } from "react-toastify";
 
   const AuthContext=createContext()
 
@@ -25,7 +26,9 @@ import {
 
         } catch (error) {
             console.log(error);
-            return { success: false };
+            
+            // toast.error(error.code)
+            return { success: false ,error:error};
             
         }
     }
@@ -35,7 +38,7 @@ import {
             return {success:true}
         } catch (error) {
             console.log(error);
-            return { success: false };
+            return { success: false,error:error };
             
         }
 

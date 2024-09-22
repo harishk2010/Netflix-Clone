@@ -4,6 +4,7 @@ import logo from "../assets/logo/netflix.png";
 import AuthContext from "../context/Authcontext.jsx";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner.jsx";
+import { toast } from "react-toastify";
 
 const Login = () => {
   // const [username, setUsername] = useState("");
@@ -21,12 +22,16 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    setSpinner(true)
+    setSpinner(true);
     let data = await logIn(email.current.value, password.current.value);
-    
+
     if (data.success) {
       navigate("/");
-      setSpinner(false)
+      setSpinner(false);
+    } else {
+      console.log(data);
+      toast.error(data.error.code.slice(5).split("-").join(" "));
+      setSpinner(false);
     }
   };
 
@@ -39,6 +44,10 @@ const Login = () => {
     );
     if (data.success) {
       navigate("/");
+    } else {
+      console.log(data);
+      toast.error(data.error.code.slice(5).split("-").join(" "));
+      setSpinner(false);
     }
   };
 
@@ -54,7 +63,12 @@ const Login = () => {
       }}
     >
       <>
-        <img src={logo} alt="" className="absolute mt-4 ml-9 w-[9rem]" />
+        <img
+          onClick={() => navigate("/")}
+          src={logo}
+          alt=""
+          className="absolute mt-4 ml-9 w-[9rem] cursor-pointer hover:w-[10rem]"
+        />
       </>
       <div className="flex w-full h-full justify-center items-center">
         <form
@@ -69,6 +83,7 @@ const Login = () => {
 
           <div className="py-2">
             <input
+              required
               type="email"
               ref={email}
               className="text-center py-3 border text-white bg-black rounded-md w-full outline-offset-1 outline-white"
@@ -79,6 +94,7 @@ const Login = () => {
           {signIn ? (
             <div className="py-2">
               <input
+                required
                 ref={name}
                 type="text"
                 className="text-center py-3 border text-white bg-black rounded-md w-full outline-offset-1 outline-white"
@@ -92,6 +108,7 @@ const Login = () => {
 
           <div className="py-2">
             <input
+              required
               type="password"
               ref={password}
               placeholder="Password"
@@ -124,12 +141,29 @@ const Login = () => {
               Log In
             </button>
           )}
-          <p
-            className="text-white text-center cursor-pointer"
-            onClick={handleSignIn}
-          >
-            Register Now!
-          </p>
+
+          {signIn ? (
+            <p
+              className="text-white text-center cursor-pointer"
+              onClick={handleSignIn}
+            >
+              Existing User?{" "}
+              <span className="underline text-red-600 font-bold ">
+                {" "}
+                Login Now!
+              </span>
+            </p>
+          ) : (
+            <p
+              className="text-white text-center cursor-pointer"
+              onClick={handleSignIn}
+            >
+              New User?{" "}
+              <span className="underline text-red-600 font-bold ">
+                Register Now!
+              </span>
+            </p>
+          )}
         </form>
       </div>
     </div>

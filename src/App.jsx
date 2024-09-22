@@ -10,16 +10,28 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import { AuthProvider } from "./context/Authcontext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Layout />}>
-        <Route path="" element={<Home />} />
+        <Route path="" element={
+         
+            <Home />
+         
+        } />
         <Route path="video/:id" element={<Video />} />
         {/* <Route/> */}
       </Route>
-      <Route path="login" element={<Login />} />
+      <Route path="login" element={
+      
+        <Login />
+      } />
     </>
   )
 );
@@ -28,6 +40,7 @@ function App() {
   return (
     <>
       <AuthProvider>
+      <ToastContainer richcolors theme='dark'/>
         <RouterProvider router={router} />
       </AuthProvider>
     </>
